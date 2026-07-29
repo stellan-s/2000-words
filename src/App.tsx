@@ -7,9 +7,12 @@ import {
   ChevronRight,
   Clock3,
   Cloud,
+  Crown,
   Flame,
   Globe2,
   Headphones,
+  House,
+  Languages,
   LockKeyhole,
   Menu,
   MoreHorizontal,
@@ -210,7 +213,21 @@ function App() {
 
   return (
     <main className="app-shell">
-      <section className="app-frame" aria-label="2000 Words vocabulary app">
+      <section
+        className={`app-frame ${screen === "welcome" ? "welcome-mode" : "workspace-mode"}`}
+        aria-label="2000 Words vocabulary app"
+      >
+        {screen !== "welcome" && (
+          <DesktopSidebar
+            screen={screen}
+            language={language}
+            onHome={goHome}
+            onBrowse={() => setScreen("browse")}
+            onPremium={() => setScreen("premium")}
+            onLanguage={() => setMenuOpen(true)}
+          />
+        )}
+
         <div className={`screen screen-${screen}`} key={screen}>
           {screen === "welcome" && (
             <WelcomeScreen
@@ -296,6 +313,58 @@ function App() {
   );
 }
 
+function DesktopSidebar({
+  screen,
+  language,
+  onHome,
+  onBrowse,
+  onPremium,
+  onLanguage,
+}: {
+  screen: Screen;
+  language: Language;
+  onHome: () => void;
+  onBrowse: () => void;
+  onPremium: () => void;
+  onLanguage: () => void;
+}) {
+  return (
+    <aside className="desktop-sidebar" aria-label="Primary navigation">
+      <button className="sidebar-brand" onClick={onHome}>
+        <span>2000</span>
+        <span>Words</span>
+      </button>
+
+      <nav className="sidebar-nav">
+        <button
+          className={screen === "home" || screen === "study" ? "active" : ""}
+          onClick={onHome}
+        >
+          <House size={19} />
+          <span>Home</span>
+        </button>
+        <button className={screen === "browse" ? "active" : ""} onClick={onBrowse}>
+          <BookOpen size={19} />
+          <span>Browse</span>
+        </button>
+        <button className={screen === "premium" ? "active" : ""} onClick={onPremium}>
+          <Crown size={19} />
+          <span>Premium</span>
+        </button>
+      </nav>
+
+      <button className="sidebar-language" onClick={onLanguage}>
+        <span className="sidebar-language-icon"><Languages size={18} /></span>
+        <span>
+          <small>Learning</small>
+          <strong>{language.name}</strong>
+        </span>
+        <ChevronRight size={17} />
+      </button>
+    </aside>
+  );
+}
+
 function WelcomeScreen({
   selectedId,
   onChoose,
@@ -313,22 +382,24 @@ function WelcomeScreen({
         <span className="brand-rule" />
         <p>Learn the 2,000 most<br />useful words in any language.</p>
       </header>
-      <div className="language-list">
-        {languages.map((language) => (
-          <button
-            key={language.id}
-            className={language.id === selectedId ? "language-row selected" : "language-row"}
-            onClick={() => onChoose(language.id)}
-          >
-            <span className="language-marker">{language.marker}</span>
-            <span>{language.name}</span>
-            <ChevronRight size={20} strokeWidth={1.4} />
-          </button>
-        ))}
+      <div className="welcome-choices">
+        <div className="language-list">
+          {languages.map((language) => (
+            <button
+              key={language.id}
+              className={language.id === selectedId ? "language-row selected" : "language-row"}
+              onClick={() => onChoose(language.id)}
+            >
+              <span className="language-marker">{language.marker}</span>
+              <span>{language.name}</span>
+              <ChevronRight size={20} strokeWidth={1.4} />
+            </button>
+          ))}
+        </div>
+        <button className="primary-button" onClick={onStart}>
+          Start with {selected.name}
+        </button>
       </div>
-      <button className="primary-button" onClick={onStart}>
-        Start with {selected.name}
-      </button>
     </div>
   );
 }
@@ -359,6 +430,11 @@ function HomeScreen({
         <strong>{language.name}</strong>
         <button className="icon-button" onClick={onPremium} aria-label="Open premium"><Settings size={22} /></button>
       </nav>
+      <header className="desktop-page-heading">
+        <span>Today</span>
+        <h1>{language.name}</h1>
+        <p>Keep your vocabulary moving forward.</p>
+      </header>
       <div className="metrics">
         <Metric icon={<BookOpen />} tone="sage">
           <div className="learned-number"><strong>{learnedCount}</strong><span>/ 2000</span></div>
