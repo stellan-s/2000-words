@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="108" fill="#f9f8f5"/>
+  <rect x="30" y="30" width="452" height="452" rx="82" fill="none" stroke="#d9ded5" stroke-width="3"/>
+  <text x="256" y="230" text-anchor="middle" fill="#171b19" font-family="Georgia, serif" font-size="126">2000</text>
+  <line x1="214" y1="270" x2="298" y2="270" stroke="#527557" stroke-width="4"/>
+  <text x="256" y="365" text-anchor="middle" fill="#171b19" font-family="Georgia, serif" font-size="84">Words</text>
+</svg>

@@ -210,18 +210,7 @@ function App() {
 
   return (
     <main className="app-shell">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-      <section className="phone" aria-label="2000 Words vocabulary app">
-        <div className="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <div className="status-icons">
-            <span className="signal">▮▮▮</span>
-            <span>⌁</span>
-            <span className="battery" />
-          </div>
-        </div>
-
+      <section className="app-frame" aria-label="2000 Words vocabulary app">
         <div className={`screen screen-${screen}`} key={screen}>
           {screen === "welcome" && (
             <WelcomeScreen
@@ -268,8 +257,6 @@ function App() {
             />
           )}
         </div>
-
-        <div className="home-indicator" aria-hidden="true" />
 
         {menuOpen && (
           <div className="sheet-backdrop" onClick={() => setMenuOpen(false)}>

@@ -5,7 +5,7 @@ language through focused, offline-first spaced repetition.
 
 ## Projects
 
-- The root project is the responsive React/Vite web prototype.
+- The root project is the responsive, installable React/Vite PWA.
 - [`mobile`](./mobile) is the Expo/React Native foundation with SQLite, FSRS-6,
   and a machine-validated 2,000-entry Spanish vocabulary library.
 
