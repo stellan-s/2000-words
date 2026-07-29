@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-07-29T14:35:12.769Z",
+  "entries": 2000,
+  "uniqueLemmas": 2000,
+  "completeDefinitions": 2000,
+  "completeExamples": 2000,
+  "maximumSourceRank": 2172,
+  "partOfSpeechCounts": {
+    "adjective": 315,
+    "adverb": 93,
+    "article": 1,
+    "conjunction": 13,
+    "interjection": 4,
+    "noun": 1016,
+    "number": 16,
+    "preposition": 19,
+    "pronoun": 35,
+    "verb": 488
+  },
+  "rejected": {
+    "excluded": 4,
+    "multiword": 0,
+    "invalidPartOfSpeech": 145,
+    "missingDefinition": 0,
+    "missingExample": 6,
+    "duplicate": 17
+  },
+  "sha256": "b6b0b915a75e15c9b042922db11210107fda62725c5f4ffd6106568bcdcd909b",
+  "contentReviewStatus": "machine-validated; human linguistic review required",
+  "sources": [
+    "https://github.com/doozan/spanish_data",
+    "https://github.com/doozan/6001_Spanish",
+    "https://en.wiktionary.org",
+    "https://tatoeba.org"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "2000 Words",
+    "slug": "2000-words",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.twothousandwords.app"
+    },
+    "android": {
+      "package": "com.twothousandwords.app",
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-sqlite"
+    ]
+  }
+}
